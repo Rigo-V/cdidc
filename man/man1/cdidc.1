@@ -1,0 +1,62 @@
+.TH CDIDC 1 2021-02-08 "cdidc VERSION_NUMBER"
+
+.SH NAME
+cdidc \- calculate MusicBrainz or CDDB ID of a CD
+
+.SH SYNOPSIS
+.B cdidc
+[\fB\-d\fR \fIDEVICE\fR]
+[\fB\-c\fR]
+[\fB\-m\fR]
+[\fB\-s\fR]
+[\fB\-w\fR \fIBROWSER\fR]
+[\fB\-b\fR]
+[\fB\-v\fR]
+[\fB\-h\fR]
+
+.SH DESCRIPTION
+\fBcdidc\fR prints MusicBrainz or CDDB identifier (defaults to both) of a compact disc using \fIlibdiscid\fR.
+.P
+If \fB\-s\fR is given, a browser will opened allowing to conveniently submit the Disc ID to MusicBrainz.
+By default, \fIxdg-open\fR is used to launch user's default browser, but any command can be used instead, by specifying it with the \fB\-w\fR option.
+
+.SH OPTIONS
+.TP
+.BR \-d\fR " " \fIDEVICE\fR
+Set the optical drive to use.
+Defaults to whatever \fIlibdiscid\fR thinks is the default for the system.
+.TP
+.BR \-c
+Prints the CDDB ID.
+.TP
+.BR \-m
+Prints the MusicBrainz Disc ID.
+.TP
+.BR \-s
+Opens the MusicBrainz.org Disc ID sumbmission form using the default browser.
+.TP
+.BR \-w\fR " " \fIBROWSER\fR
+Use command BROWSER for submitting the Disc ID instead of the system default.
+Implies \fB\-s\fR.
+.TP
+.BR \-b
+Print more briefly, i.e. just the ID(s) separated by newlines, rather than "ID-Type: ID".
+.TP
+.BR \-v
+Prints version number and a copyright disclaimer.
+.TP
+.BR \-h
+Prints a short help message.
+
+.SH BUGS
+Bug reports and patches are appreciated, send them to the email address below.
+
+.SH AUTHOR
+Written by Riku Viitanen <riku.viitanen at protonmail.com>
+
+.SH COPYRIGHT
+Copyright © 2020 Riku Viitanen
+.P
+License GPLv3+: GNU General Public License version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.

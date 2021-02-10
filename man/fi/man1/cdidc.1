@@ -1,0 +1,61 @@
+.TH CDIDC 1 2021-02-08 "cdidc VERSION_NUMBER"
+
+.SH NIMI
+cdidc \- laske CD-levyn MusicBrainz- tai CDDB-tunniste
+
+.SH YLEISKATSAUS
+.B cdidc
+[\fB\-d\fR \fILAITE\fR]
+[\fB\-c\fR]
+[\fB\-m\fR]
+[\fB\-s\fR]
+[\fB\-w\fR \fISELAIN\fR]
+[\fB\-b\fR]
+[\fB\-v\fR]
+[\fB\-h\fR]
+
+.SH KUVAUS
+\fBcdidc\fR tulostaa CD-levyn MusicBrainz- tai CDDB-tunnisteen (oletuksena molemmat) \fIlibdiscid\fR:tä käyttäen.
+.P
+Jos \fB\-s\fR on annettu, avataan MusicBrainzin Disc ID -lähetyssivu selaimessa. 
+Oletuksena selaimen valitsemiseen käytetään komentoa \fIxdg-open\fR, mutta komennon voi määrittää valinnalla \fB\-w\fR.
+
+.TP
+.BR \-d\fR " " \fILAITE\fR
+Valitse CD-levyn lukemiseen käytettävä optinen asema.
+Oletuksena käytetään \fIlibdiscid\fR:n valitsemaa oletusasemaa.
+.TP
+.BR \-c
+Tulostaa CDDB ID:n.
+.TP
+.BR \-m
+Tulostaa MusicBrainz ID:n.
+.TP
+.BR \-s
+Avaa MusicBrainz.org:n levytunnisteen lähetyslomakkeen oletusselaimella.
+.TP
+.BR \-w\fR " " \fISELAIN\fR
+Käytä SELAINta levytunnisteen lähettämiseen oletusselaimen sijaan.
+Implikoi \fB\-s\fR.
+.TP
+.BR \-b
+Tulosta pelkät tunnisteet välilyöntien erottamana. (Vertaa oletukseen: "ID-tyyppi: tunniste").
+.TP
+.BR \-v
+Tulostaa versio- ja tekijänoikeustietoja.
+.TP
+.BR \-h
+Tulostaa lyhyen ohjeen.
+
+.SH BUGIT
+Virheraportteja ja paikkauksia otetaan miellellään vastaan sähkäpostitse alla olevaan osoitteeseen.
+
+.SH TEKIJÄ
+Kirjoittanut Riku Viitanen <riku.viitanen ät protonmail.com>
+
+.SH TEKIJÄNOIKEUDET
+Copyright © 2020 Riku Viitanen
+.P
+Lisenssi GPLv3+: GNU General Public License versio 3 tai uudempi <https://gnu.org/licenses/gpl.html>.
+Tämä on vapaa ohjelmisto: voit vapaasti muokata ja jakaa sitä, lisenssiehtojen mukaisesti.
+Takuuta EI OLE; ei edes KAUPALLISESTI HYVÄKSYTTÄVÄSTÄ LAADUSTA tai SOPIVUUDESTA TIETTYYN TARKOITUKSEEN.
