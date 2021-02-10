@@ -212,7 +212,7 @@ int main(int argc, char **argv) {
 			if (flag_brief)
 				puts(mbid);
 			else
-				printf("Musicbrainz Disc ID: %s\n", mbid);
+				printf("MusicBrainz Disc ID: %s\n", mbid);
 		}
 
 		if (flag_submit_id) {

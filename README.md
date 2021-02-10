@@ -8,7 +8,7 @@ Print all IDs:
 
 ```
 $ cdidc
-Musicbrainz Disc ID: 60h_eoFMGeWtBr45lfvY50pFW7I-
+MusicBrainz Disc ID: 60h_eoFMGeWtBr45lfvY50pFW7I-
 CDDB ID: 940a450b
 ```
 
