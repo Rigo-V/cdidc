@@ -33,14 +33,10 @@
 #include <discid/discid.h>
 
 
-#define QUOTE(str) #str
-#define Q(str) QUOTE(str)
-
-
 /* Command to open user's default browser */
 #define SYSTEM_BROWSER_CMD "xdg-open"
 
-
+/* This message is printed when 'cdidc -v' is run */
 static const char* copyright_message = "Copyright © 2021 Riku Viitanen\n\
 License GPLv3+: GNU GPL version 3 or later\
  <https://gnu.org/licenses/gpl.html>.\n\
@@ -78,7 +74,7 @@ static void launch_browser(char* browser, char *url) {
 		execvp(browser, argv_launch);
 
 		dprintf(stderr_copy, _("%s: Failed to start %s: %s\n"),
-	                Q(NAME), browser, strerror(errno));
+	                NAME, browser, strerror(errno));
 
 
 		dprintf(stdout_copy, _("Submission URL: %s\n"), url);
@@ -93,7 +89,7 @@ static void launch_browser(char* browser, char *url) {
 
 
 static void print_version() {
-	printf("%s %s\n", Q(NAME), Q(VERSION));
+	printf("%s %s\n", NAME, VERSION);
 }
 
 
@@ -110,7 +106,7 @@ static void print_usage(char *program_name) {
 	puts(_("-w BROWSER  Use BROWSER instead of the system default (implies -s)"));
 	puts(_("-b          Format the output more briefly"));
 	printf(_("-v          Print version (%s) information and exit\n"),
-	                                                        Q(VERSION));
+	                                                        VERSION);
 	puts(_("-h          Print this help message and exit"));
 }
 
@@ -181,8 +177,8 @@ int main(int argc, char **argv) {
 
 	/* Use user's preferred locale. */
 	setlocale(LC_ALL, "");
-	bindtextdomain(Q(NAME), "/usr/share/locale/");
-	textdomain(Q(NAME));
+	bindtextdomain(NAME, "/usr/share/locale/");
+	textdomain(NAME);
 
 	bool flag_print_mb_id = false;
 	bool flag_print_cddb_id = false;

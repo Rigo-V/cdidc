@@ -19,13 +19,13 @@ all: build/$(NAME) l10n man
 
 build/$(NAME): $(CFILES)
 	mkdir -p build
-	cc -s $(CFLAGS) $(LIBS) -O$(OPTLEVEL) -DNAME=$(NAME) -DVERSION=$(VERSION) -o $@ $^
+	cc -s $(CFLAGS) $(LIBS) -O$(OPTLEVEL) -DNAME=\"$(NAME)\" -DVERSION=\"$(VERSION)\" -o $@ $^
 
 
 debug: build/$(NAME)-debug l10n man
 build/$(NAME)-debug: $(CFILES)
 	mkdir -p build
-	cc $(CFLAGS) $(LIBS) -g -DNAME=$(NAME) -DVERSION=$(VERSION) -o build/$(NAME)-debug $^
+	cc $(CFLAGS) $(LIBS) -g -DNAME=\"$(NAME)\" -DVERSION=\"$(VERSION)\" -o build/$(NAME)-debug $^
 
 
 man: $(MANPAGES)
