@@ -93,7 +93,7 @@ static void print_version() {
 }
 
 
-static void print_usage(char *program_name) {
+static void print_help(char *program_name) {
 	printf(_("Usage: %s [OPTIONS]\n"), program_name);
 	puts(_("Calculate MusicBrainz or CDDB IDs of a compact disc."));
 	puts(_("If neither type of ID is specified, both are printed.\n"));
@@ -111,10 +111,11 @@ static void print_usage(char *program_name) {
 }
 
 
-static void get_options(int argc, char **argv, bool *flag_brief, char **device,
-                        bool *flag_submit_id, bool *flag_calculate_mb_id,
-		        bool *flag_calculate_cddb_id, char **browser) {
-	
+static void get_options(int argc, char **argv, char **device, 
+                        bool *flag_print_mb_id, bool *flag_submit_id,
+                        bool *flag_print_cddb_id, bool *flag_brief,
+                                                  char **browser) {
+
 	int o;
 	bool flag_cddb = false;
 	bool flag_mb = false;
@@ -153,7 +154,7 @@ static void get_options(int argc, char **argv, bool *flag_brief, char **device,
 				exit(0);
 
 			case 'h':
-				print_usage(argv[0]);
+				print_help(argv[0]);
 				exit(0);
 
 			case 'w':
@@ -162,14 +163,14 @@ static void get_options(int argc, char **argv, bool *flag_brief, char **device,
 				break;
 
 			default:
-				print_usage(argv[0]);
+				print_help(argv[0]);
 				exit(-1);
 		}
 	}
 
 	/* If neither of these flags is set, set both */
-	*flag_calculate_mb_id = flag_mb || (!flag_cddb);
-	*flag_calculate_cddb_id = flag_cddb || (!flag_mb);
+	*flag_print_mb_id = flag_mb || (!flag_cddb);
+	*flag_print_cddb_id = flag_cddb || (!flag_mb);
 }
 
 
@@ -185,15 +186,18 @@ int main(int argc, char **argv) {
 	bool flag_brief = false;
 	bool flag_submit_id = false;
 
-	/* Let libdiscid decide the default cd drive on user's system. */
-	char *device = discid_get_default_device();
+	char *device = NULL;
 
 	char *browser = SYSTEM_BROWSER_CMD;
 
 
-	get_options(argc, argv, &flag_brief, &device, &flag_submit_id,
-	                  &flag_print_mb_id, &flag_print_cddb_id, &browser);
+	get_options(argc, argv, &device, &flag_print_mb_id, &flag_submit_id,
+                    &flag_print_cddb_id, &flag_brief, &browser);
 
+	/* If optical drive wasn't specified, query for a sane default */
+	if (!device) {
+		device = discid_get_default_device();
+	}
 
 	DiscId *disc = discid_new();
 
