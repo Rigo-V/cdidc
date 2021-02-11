@@ -43,19 +43,19 @@ build/l10n/%.mo: l10n/%.po
 	mkdir -p build/l10n
 	msgfmt $^ -o $@
 
-
 l10n-update-template: $(CFILES)
 	xgettext --from-code UTF-8 --package-name $(NAME) --package-version=$(VERSION) --copyright-holder=$(AUTHOR) --output l10n/template.pot -k_ $(CFILES)
 
 
-run: $(NAME)
-	./$(NAME)
+run: build/$(NAME)
+	build/$(NAME)
 
 
 install: build/$(NAME) l10n
 	cp build/$(NAME) /usr/bin/
 	cp -r build/man/* /usr/share/man/
 	@ls -1 build/l10n/*.mo | sed -E "p;s/build\/l10n\/(.*).mo/\/usr\/share\/locale\/\1\/LC_MESSAGES\/$(NAME).mo/" | xargs -L2 cp
+
 
 uninstall:
 	rm -f /usr/bin/$(NAME)
