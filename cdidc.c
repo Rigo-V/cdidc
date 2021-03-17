@@ -89,7 +89,7 @@ static void launch_browser(char *browser, char *url) {
 
 
 static void print_version() {
-	printf("%s %s using %s\n",
+	printf("%s %s (%s)\n",
 		NAME, VERSION, discid_get_version_string());
 }
 
