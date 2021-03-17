@@ -195,11 +195,6 @@ int main(int argc, char **argv) {
 	get_options(argc, argv, &device, &flag_print_mb_id, &flag_submit_id,
                     &flag_print_cddb_id, &flag_brief, &browser);
 
-	/* If optical drive wasn't specified, query for a sane default */
-	if (!device) {
-		device = discid_get_default_device();
-	}
-
 	DiscId *disc = discid_new();
 
 	/* Make sure disc is readable */
