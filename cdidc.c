@@ -205,21 +205,20 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 
-	if (flag_print_mb_id || flag_submit_id) {
-		char *mbid = discid_get_id(disc);
-
-		if (flag_print_mb_id) {
-			if (flag_brief)
-				puts(mbid);
-			else
-				printf("MusicBrainz Disc ID: %s\n", mbid);
-		}
-
-		if (flag_submit_id) {
-			char *url = discid_get_submission_url(disc);
-			launch_browser(browser, url);
+	if (flag_print_mb_id) {
+		if (flag_brief) {
+			puts(discid_get_id(disc));
+		} else {
+			printf("MusicBrainz Disc ID: %s\n",
+				discid_get_id(disc));
 		}
 	}
+
+	if (flag_submit_id) {
+		char *url = discid_get_submission_url(disc);
+		launch_browser(browser, url);
+	}
+
 
 	if (flag_print_cddb_id) {
 		if (flag_brief)
