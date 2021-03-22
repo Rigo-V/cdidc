@@ -70,7 +70,7 @@ static void launch_browser(char *browser, char *url) {
 		char *argv_launch[] = {browser, url, NULL};
 
 		/* If this succeeds, it will replace the child process
-		 * and none of the lines coming after will actually execute. */
+		 * and none of the lines coming after will be executed. */
 		execvp(browser, argv_launch);
 
 		dprintf(stderr_copy, _("%s: Failed to start %s: %s\n"),
@@ -191,7 +191,6 @@ int main(int argc, char **argv) {
 
 	char *browser = SYSTEM_BROWSER_CMD;
 
-
 	get_options(argc, argv, &device, &flag_print_mb_id, &flag_submit_id,
                     &flag_print_cddb_id, &flag_brief, &browser);
 
@@ -199,7 +198,8 @@ int main(int argc, char **argv) {
 
 	/* Make sure disc is readable */
 	if (discid_read_sparse(disc, device, 0) == 0) {
-		fprintf(stderr, "libdiscid: %s\n", discid_get_error_msg(disc));
+		fprintf(stderr, "libdiscid: %s\n",
+				discid_get_error_msg(disc));
 		discid_free(disc);
 
 		return 1;
