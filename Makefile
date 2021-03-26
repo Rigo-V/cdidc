@@ -51,7 +51,7 @@ run: build/$(NAME)
 	build/$(NAME)
 
 
-install: build/$(NAME) l10n
+install: build/$(NAME) l10n man
 	cp build/$(NAME) /usr/bin/
 	cp -r build/man/* /usr/share/man/
 	@ls -1 build/l10n/*.mo | sed -E "p;s/build\/l10n\/(.*).mo/\/usr\/share\/locale\/\1\/LC_MESSAGES\/$(NAME).mo/" | xargs -L2 cp
@@ -64,3 +64,4 @@ uninstall:
 
 clean:
 	rm -rf build/*
+
